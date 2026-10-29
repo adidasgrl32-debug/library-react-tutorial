@@ -250,13 +250,7 @@ header {
 
 .header__img--wrapper {
   padding: 20px;
-
-  /* Added this after the tutorial to 
-  show it over the wave on larger screens */
   z-index: 50;
-  
-  /* Added this after the tutorial to 
-  make landing page responsive on laptops */
   max-height: 50vh;
 }
 
@@ -404,6 +398,7 @@ FEATURES
 .book__title--skeleton {
   height: 21px;
   width: 100%;
+  max-width: 250px;
 }
 
 .book__rating--skeleton {

@@ -1,45 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
+import Rating from './Rating';
+import Price from './Price';
 
 const Book = ({ book }) => {
+  const [img, setImg] = useState();
+
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    const image = new Image();
+    image.src = book.url;
+    image.onload = () => {
+      setTimeout(() => {
+        if (mountedRef.current) {
+          setImg(image);
+        }
+      }, 300);
+    };
+    return () => {
+      //when the component unmouts
+      mountedRef.current = false;
+    }
+  })
+
   return (
    <div className="book">
-            <a href="/">
-              <figure className="book__img--wrapper">
-                <img
-                  src={book.url}
-                  alt=""
-                  className="book__img"
-                />
+    {img ? (
+       <>
+          <Link to={"/books/${books.id}"}>
+            <figure className="book__img--wrapper">
+              <img
+                src={img.src}
+                alt=""
+                className="book__img" />
               </figure>
-            </a>
+            </Link>
             <div className="book__title">
-              <a href="/" className="book__title--link">
+              <Link to={"/books/${books.id}"} className="book__title--link">
                 {book.Title}
-              </a>
+              </Link>
             </div>
-            <div className="book__ratings">
-              {
-                new Array(Math.floor(book.rating)).fill(0).map((_, index) => <FontAwesomeIcon icon="star" key={index} />)
-              }
-              {
-                !Number.isInteger(book.rating) && <FontAwesomeIcon icon="star-half-alt" />
-              }
-            </div>
-            <div className="book__price">
-              {book.salePrice ? (
-                <>
-                <span className="book__price--normal">
-                  ${book.originalPrice.toFixed(2)}
-                </span>
-                ${book.salePrice.toFixed(2)}
-                </>
-              ) : (
-                <>${book.originalPrice.toFixed(2)}</>
-              )
-                }
-            </div>
-        </div>
+            <Rating rating={book.rating}/>
+            <Price salePrice={book.salePrice} originalPrice={book.originalPrice} />
+        </>
+    ) : (
+      <> 
+      <div className="book__img--skelton"></div>
+        <div className="book__title--skelton"></div>
+          <div className="book__rating--skelton"></div>
+            <div className="book__price--skelton"></div>
+      </>
+    )}
+    </div>
   );
 };
 
