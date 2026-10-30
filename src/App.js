@@ -1,5 +1,5 @@
 import Nav from './components/Nav';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes} 
 from 'react-router-dom';
@@ -47,14 +47,6 @@ function App() {
 
   function removeItem(item) {
     setCart((oldCart) => oldCart.filter((cartItem) => cartItem.id !== item.id));
-  }
-
-  function numberOfItems() {
-    let counter = 0;
-    cart.forEach((item) => {
-      counter += +item.quantity;
-    });
-    return counter;
   }
 
   function numberOfItems() {

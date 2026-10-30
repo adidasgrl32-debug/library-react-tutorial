@@ -1,5 +1,4 @@
 import React from "react";
-import { books } from '../data.js';
 import EmptyCart from "../assets/empty_cart.svg";
 import { Link } from 'react-router-dom';
 

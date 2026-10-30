@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 import Price from './Price';
 
 const Book = ({ book }) => {
   const [img, setImg] = useState();
-
-  const mountedRef = useRef(true);
 
   useEffect(() => {
     const image = new Image();
