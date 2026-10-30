@@ -84,14 +84,10 @@ function App() {
         <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/books" exact element={<Books books={books} />} />
-        <Route path="/books/:id" element={<BookInfo books={books} />}
-          addItemToCart={addItemToCart} />
-         <Route path="/cart"element={<Cart cart={cart} />}
-            cart={cart}
-            updateCart={updateCart}
-            removeItem={removeItem}
-            totals={calcPrices()}
-          />
+        <Route path="/books/:id" element={<BookInfo books={books} addItemToCart={addItemToCart} />}
+        />
+        <Route path="/cart" element={<Cart cart={cart} updateCart={updateCart} removeItem={removeItem} totals={calcPrices()}/>}
+        />
         </Routes>    
         <Footer />
       </div>
