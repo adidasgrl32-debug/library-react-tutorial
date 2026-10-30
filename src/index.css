@@ -608,17 +608,6 @@ select {
   margin-bottom: 0;
 }
 
-.book__back {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.book__back a {
-  color: #6415ff;
-  text-decoration: none;
-}
-
 .book__summary {
   margin-bottom: 16px;
 }
