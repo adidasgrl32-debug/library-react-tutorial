@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import Rating from './Rating';
 import Price from './Price';
 
@@ -12,24 +12,17 @@ const Book = ({ book }) => {
   useEffect(() => {
     const image = new Image();
     image.src = book.url;
-    image.onload = () => {
-      setTimeout(() => {
-        if (mountedRef.current) {
-          setImg(image);
-        }
-      }, 300);
-    };
-    return () => {
-      //when the component unmouts
-      mountedRef.current = false;
-    }
-  })
 
+    image.onload = () => {
+          setImg(image);
+        };
+    }, [book.url]);
+  
   return (
    <div className="book">
     {img ? (
        <>
-          <Link to={"/books/${books.id}"}>
+          <Link to={`/books/${book.id}`}>
             <figure className="book__img--wrapper">
               <img
                 src={img.src}
@@ -38,7 +31,7 @@ const Book = ({ book }) => {
               </figure>
             </Link>
             <div className="book__title">
-              <Link to={"/books/${books.id}"} className="book__title--link">
+              <Link to={`/books/${book.id}`} className="book__title--link">
                 {book.Title}
               </Link>
             </div>

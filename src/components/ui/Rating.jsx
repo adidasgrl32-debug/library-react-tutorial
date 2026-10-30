@@ -7,8 +7,8 @@ const Rating = ({ rating }) => {
   return (
     <div className="book__ratings">
       {new Array(fullStars).fill(0).map((_, index) => (
-        <FontAwesomeIcon icon="star" />
-      ))}
+        <FontAwesomeIcon key={index} icon="star" />
+  ))}
       {rating % 1 !== 0 && 
         <FontAwesomeIcon icon="star-half-alt" />
       }

@@ -46,8 +46,6 @@ a:hover {
   text-decoration: underline;
 }
 
-
-
 ul {
   display: flex;
 }
@@ -608,6 +606,17 @@ select {
 .book__selected--title--top {
   margin-left: 10px;
   margin-bottom: 0;
+}
+
+.book__back {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.book__back a {
+  color: #6415ff;
+  text-decoration: none;
 }
 
 .book__summary {
